@@ -14,10 +14,15 @@ const TIMELINE_HTML = `<div class="week" data-week="1">
           <span class="week-range">Week 1</span>
         </div>
         <ul class="task-list">
-          <li class="task"><input type="checkbox" id="w1t1"><label for="w1t1">Read "Basics" and "Everyday Types" in the TS Handbook</label></li>
+          <li class="task"><input type="checkbox" id="w1t1"><label for="w1t1">Read "Basics" in the TS Handbook</label></li>
+          <li class="task"><input type="checkbox" id="w1t1"><label for="w1t1">Read "Everyday Types" in the TS Handbook</label></li>
           <li class="task"><input type="checkbox" id="w1t2"><label for="w1t2">Convert one existing JS file (Ramp Ready or Duhlicious) to strict TypeScript</label></li>
           <li class="task"><input type="checkbox" id="w1t3"><label for="w1t3">Watch freeCodeCamp's TypeScript course, first third</label></li>
-          <li class="task"><input type="checkbox" id="w1t4"><label for="w1t4">DSA: first 5 problems from NeetCode's arrays/hashing set</label></li>
+          <li class="task"><input type="checkbox" id="w1t4"><label for="w1t4">DSA: 1st problem from NeetCode's arrays/hashing set</label></li>
+          <li class="task"><input type="checkbox" id="w1t4"><label for="w1t4">DSA: 2nd problem from NeetCode's arrays/hashing set</label></li>
+          <li class="task"><input type="checkbox" id="w1t4"><label for="w1t4">DSA: 3rd problem from NeetCode's arrays/hashing set</label></li>
+          <li class="task"><input type="checkbox" id="w1t4"><label for="w1t4">DSA: 4th problem from NeetCode's arrays/hashing set</label></li>
+          <li class="task"><input type="checkbox" id="w1t4"><label for="w1t4">DSA: 5th problem from NeetCode's arrays/hashing set</label></li>
         </ul>
         <div class="resources">
           <a href="https://www.typescriptlang.org/docs/handbook/intro.html" target="_blank" rel="noopener">TS Handbook</a>
