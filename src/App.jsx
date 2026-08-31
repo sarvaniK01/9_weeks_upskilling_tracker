@@ -26,7 +26,7 @@ const TIMELINE_HTML = `<div class="week" data-week="1">
         </ul>
         <div class="resources">
           <a href="https://www.typescriptlang.org/docs/handbook/intro.html" target="_blank" rel="noopener">TS Handbook</a>
-          <a href="https://www.youtube.com/@freecodecamp" target="_blank" rel="noopener">freeCodeCamp (YouTube)</a>
+          <a href="https://www.youtube.com/watch?v=30LWjhZzg50" target="_blank" rel="noopener">freeCodeCamp (YouTube) (till 1:30 (1hr 30 mins))</a>
           <a href="https://neetcode.io/roadmap" target="_blank" rel="noopener">NeetCode roadmap</a>
         </div>
         <details class="syllabus">
