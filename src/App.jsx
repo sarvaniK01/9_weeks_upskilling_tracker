@@ -412,38 +412,52 @@ const TIMELINE_HTML = `<div class="week" data-week="1">
         </div>
       </div>`;
 
-export default function App() {{
-  const [completed, setCompleted] = useState(() => {{
-    try {{ return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); }}
-    catch {{ return []; }}
-  }});
+export default function App() {
+  const [completed, setCompleted] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
+    } catch {
+      return [];
+    }
+  });
+
   const [saved, setSaved] = useState(false);
 
-  useEffect(() => {{
+  useEffect(() => {
     const root = document.getElementById("timeline");
     if (!root) return;
+
     root.innerHTML = TIMELINE_HTML;
 
     const boxes = [...root.querySelectorAll('input[type="checkbox"]')];
-    boxes.forEach((box) => {{
+
+    boxes.forEach((box) => {
       box.checked = completed.includes(box.id);
       box.closest(".task")?.classList.toggle("checked", box.checked);
-      box.addEventListener("change", () => {{
-        setCompleted((prev) => box.checked
-          ? [...new Set([...prev, box.id])]
-          : prev.filter((id) => id !== box.id));
-      }});
-    }});
 
-    return () => boxes.forEach((box) => box.replaceWith(box.cloneNode(true)));
-  }}, [completed]);
+      box.addEventListener("change", () => {
+        setCompleted((prev) =>
+          box.checked
+            ? [...new Set([...prev, box.id])]
+            : prev.filter((id) => id !== box.id)
+        );
+      });
+    });
 
-  useEffect(() => {{
+    return () =>
+      boxes.forEach((box) => {
+        box.replaceWith(box.cloneNode(true));
+      });
+  }, [completed]);
+
+  useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(completed));
     setSaved(true);
+
     const timer = setTimeout(() => setSaved(false), 900);
+
     return () => clearTimeout(timer);
-  }}, [completed]);
+  }, [completed]);
 
   const progress = (completed.length / TOTAL_TASKS) * 100;
 
@@ -452,21 +466,59 @@ export default function App() {{
       <div className="wrap">
         <header>
           <div className="kicker">Study tracker</div>
-          <h1>9 weeks from resume gaps to a real, defensible skill set</h1>
-          <p className="sub">TypeScript and testing come first because they're what actually ends an interview early. Design systems and AI come after the baseline is solid. Open "detailed topics" under any week to see exactly what's inside it before you commit to it.</p>
+
+          <h1>
+            9 weeks from resume gaps to a real, defensible skill set
+          </h1>
+
+          <p className="sub">
+            TypeScript and testing come first because they're what actually
+            ends an interview early. Design systems and AI come after the
+            baseline is solid. Open "detailed topics" under any week to see
+            exactly what's inside it before you commit to it.
+          </p>
+
           <div className="progress-shell">
             <div className="progress-top">
-              <span className="progress-label">Overall progress</span>
-              <span className="progress-count">{{completed.length}} / {{TOTAL_TASKS}} tasks</span>
+              <span className="progress-label">
+                Overall progress
+              </span>
+
+              <span className="progress-count">
+                {completed.length} / {TOTAL_TASKS} tasks
+              </span>
             </div>
-            <div className="progress-track"><div className="progress-fill" style={{{{width: `${{progress}}%`}}}} /></div>
-            <div className={{`save-status ${{saved ? "ok" : ""}}`}}>{{saved ? "Saved." : "Progress saves automatically in this browser."}}</div>
+
+            <div className="progress-track">
+              <div
+                className="progress-fill"
+                style={{ width: `${progress}%` }}
+              />
+            </div>
+
+            <div className={`save-status ${saved ? "ok" : ""}`}>
+              {saved
+                ? "Saved."
+                : "Progress saves automatically in this browser."}
+            </div>
           </div>
-          <div className="daily-note"><b>Running daily habit:</b> 30–45 min of DSA every day (NeetCode's Blind 75, in order) sits underneath all 9 weeks below — it's not called out per week so it doesn't get skipped when a week feels full.</div>
+
+          <div className="daily-note">
+            <b>Running daily habit:</b> 30–45 min of DSA every day
+            (NeetCode's Blind 75, in order) sits underneath all 9 weeks
+            below — it's not called out per week so it doesn't get skipped
+            when a week feels full.
+          </div>
         </header>
+
         <div className="timeline" id="timeline" />
-        <footer>Everything linked here is free. Resume rewrite comes after week 9, once every line on it is something you could defend in a follow-up question.</footer>
+
+        <footer>
+          Everything linked here is free. Resume rewrite comes after week 9,
+          once every line on it is something you could defend in a follow-up
+          question.
+        </footer>
       </div>
     </div>
   );
-}}
+}
