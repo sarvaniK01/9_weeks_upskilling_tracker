@@ -1,18 +1,18 @@
 # 9-Week Upskilling Tracker
 
-React + Vite conversion of the supplied HTML tracker.
+React + Vite version of the supplied tracker.
 
-Run locally:
+## Local
+
 ```bash
 npm install
 npm run dev
 ```
 
-Build:
-```bash
-npm run build
-```
+## Vercel
 
-Deploy: push this folder to GitHub and import it into Vercel. Vercel detects Vite automatically.
+Import the repository into Vercel. Framework preset: Vite (auto-detected). Build command: `npm run build`. Output directory: `dist`.
 
-Progress uses browser `localStorage`, so it persists across refreshes/visits on the same browser/device.
+## Tracking
+
+Completed tasks are saved to browser localStorage under `week-tracker-progress`. This is device/browser-local tracking; a backend is not required.
